@@ -166,4 +166,13 @@ def test_total_amount_after_removal():
     - Se recalcula el total y se espera que sea 25, reflejando únicamente el monto del gasto aún presente.
     - Este test valida que el método total_amount refleja los cambios en el sistema ante eliminaciones, manteniendo la consistencia de los datos agregados.
     """
-    ...
+    service=create_service()
+
+    service.create_expense("Cursos", 30)
+    service.create_expense("Internet", 25)
+
+    assert(service.total_amount()==55)
+
+    service.remove_expense(1)
+
+    assert(service.total_amount()==25)
