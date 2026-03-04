@@ -9,22 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python
-      - uses: actions/setup-python@v5
+        uses: actions/setup-python@v5
       - name: Install uv
-      - run: pip install uv
+        run: pip install uv
       - name: Install dependencies
-      - run: uv sync
+        run: uv sync
       - name: Install ruff and mypy
-      - run: apt install ruff mypy -y
+        run: apt install ruff mypy -y
       - name: Ruff format
-      - run: python3 -m ruff format . --check
+        run: python3 -m ruff format . --check
       - name: Ruff linter
-      - run: python3 -m ruff check . --fix
+        run: python3 -m ruff check . --fix
       - name: Unit tests
-      - run: python3 -m pytest ./core/tests/unit
+        run: python3 -m pytest ./core/tests/unit
       - name: Integration tests
-      - run: python3 -m pytest ./core/tests/integration
+        run: python3 -m pytest ./core/tests/integration
       - name: BDD tests
-      - run: python3 -m pytest ./core/tests/behaviour
+        run: python3 -m pytest ./core/tests/behaviour
