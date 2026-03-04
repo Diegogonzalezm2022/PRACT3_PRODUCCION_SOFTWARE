@@ -13,18 +13,18 @@ jobs:
       - name: Set up Python
       - uses: actions/setup-python@v5
       - name: Install uv
-      - runs: pip install uv
+      - run: pip install uv
       - name: Install dependencies
-      - runs: uv sync
+      - run: uv sync
       - name: Install ruff and mypy
-      - runs: apt install ruff mypy -y
+      - run: apt install ruff mypy -y
       - name: Ruff format
-      - runs: python3 -m ruff format . --check
+      - run: python3 -m ruff format . --check
       - name: Ruff linter
-      - runs: python3 -m ruff check . --fix
+      - run: python3 -m ruff check . --fix
       - name: Unit tests
-      - runs: python3 -m pytest ./core/tests/unit
+      - run: python3 -m pytest ./core/tests/unit
       - name: Integration tests
-      - runs: python3 -m pytest ./core/tests/integration
+      - run: python3 -m pytest ./core/tests/integration
       - name: BDD tests
-      - runs: python3 -m pytest ./core/tests/behaviour
+      - run: python3 -m pytest ./core/tests/behaviour
