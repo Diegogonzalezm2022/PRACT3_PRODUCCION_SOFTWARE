@@ -16,8 +16,7 @@ jobs:
       - name: Install dependencies
         run: uv sync
       - name: Install ruff and mypy
-        run: pip install ruff
-        run: pip install mypy
+        run: pip install ruff mypy
       - name: Ruff format
         run: python3 -m ruff format . --check
       - name: Ruff linter
