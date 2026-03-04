@@ -56,7 +56,15 @@ def test_get_by_id_returns_expense():
     Se guarda un gasto en el repositorio, luego se recupera por su id y se verifica que sea el mismo
     objeto (comparando sus atributos principales).
     """
-    ...
+    repo = InMemoryExpenseRepository()
+    expense = create_expense()
+    repo.save(expense)
+    returned_expense=repo.get_by_id(1)
+    assert(expense.id==returned_expense.id)
+    assert(expense.amount==returned_expense.amount)
+    assert(expense.description==returned_expense.description)
+    assert(expense.title==returned_expense.title)
+    assert(expense.expense_date==returned_expense.expense_date)
 
 
 def test_get_by_id_returns_none_if_not_found():
@@ -64,4 +72,6 @@ def test_get_by_id_returns_none_if_not_found():
     Prueba que el método repo.get_by_id() retorna None cuando se consulta un id que no corresponde a ningún gasto guardado.
     Se verifica que buscar un id inexistente no produce error, sino que devuelve None.
     """
-    ...
+    repo = InMemoryExpenseRepository()
+    returned = repo.get_by_id(1)
+    assert(returned is None)
