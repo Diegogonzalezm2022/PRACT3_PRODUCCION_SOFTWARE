@@ -16,7 +16,8 @@ jobs:
       - name: Install dependencies
         run: uv sync
       - name: Install ruff and mypy
-        run: sudo apt install ruff mypy -y
+        run: pip install ruff
+        run: pip install mypy
       - name: Ruff format
         run: python3 -m ruff format . --check
       - name: Ruff linter
