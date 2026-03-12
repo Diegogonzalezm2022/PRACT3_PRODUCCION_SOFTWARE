@@ -4,7 +4,7 @@ from datetime import date
 from core.domain_error import (
     InvalidAmountError,
     InvalidExpenseDateError,
-    EmptyTitleError
+    EmptyTitleError,
 )
 
 
@@ -27,6 +27,4 @@ class Expense:
             )
 
         if self.title == "":
-            raise EmptyTitleError(
-                "El título no debe ser nulo"
-            )
+            raise EmptyTitleError("El título no debe ser nulo")

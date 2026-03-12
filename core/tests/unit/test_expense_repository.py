@@ -59,12 +59,12 @@ def test_get_by_id_returns_expense():
     repo = InMemoryExpenseRepository()
     expense = create_expense()
     repo.save(expense)
-    returned_expense=repo.get_by_id(1)
-    assert(expense.id==returned_expense.id)
-    assert(expense.amount==returned_expense.amount)
-    assert(expense.description==returned_expense.description)
-    assert(expense.title==returned_expense.title)
-    assert(expense.expense_date==returned_expense.expense_date)
+    returned_expense = repo.get_by_id(1)
+    assert expense.id == returned_expense.id
+    assert expense.amount == returned_expense.amount
+    assert expense.description == returned_expense.description
+    assert expense.title == returned_expense.title
+    assert expense.expense_date == returned_expense.expense_date
 
 
 def test_get_by_id_returns_none_if_not_found():
@@ -74,4 +74,4 @@ def test_get_by_id_returns_none_if_not_found():
     """
     repo = InMemoryExpenseRepository()
     returned = repo.get_by_id(1)
-    assert(returned is None)
+    assert returned is None

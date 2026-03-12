@@ -5,7 +5,7 @@ from core.expense import Expense
 from core.domain_error import (
     EmptyTitleError,
     InvalidAmountError,
-    InvalidExpenseDateError
+    InvalidExpenseDateError,
 )
 
 
@@ -24,7 +24,13 @@ def test_create_valid_expense():
 
 def test_empty_title_raises_error():
     with pytest.raises(EmptyTitleError):
-        Expense(id=1, title="", amount=10, description="", expense_date=date.today())
+        Expense(
+            id=1,
+            title="",
+            amount=10,
+            description="",
+            expense_date=date.today(),
+        )
 
 
 def test_negative_amount_raises_error():
@@ -39,7 +45,13 @@ def test_negative_amount_raises_error():
     - Revisar si esta restricción ya está implementada en la clase Expense.
     """
     with pytest.raises(InvalidAmountError):
-      Expense(id=1, title="Test", amount=-1, description="test description", expense_date=date.today())
+        Expense(
+            id=1,
+            title="Test",
+            amount=-1,
+            description="test description",
+            expense_date=date.today(),
+        )
 
 
 def test_future_date_raises_error():
@@ -55,5 +67,10 @@ def test_future_date_raises_error():
     - Verificar si ya se encuentra implementada esta validación en la clase Expense.
     """
     with pytest.raises(InvalidExpenseDateError):
-      Expense(id=1, title="Test", amount=1, description="test description", expense_date=date.today() + timedelta(days=1))
-
+        Expense(
+            id=1,
+            title="Test",
+            amount=1,
+            description="test description",
+            expense_date=date.today() + timedelta(days=1),
+        )
